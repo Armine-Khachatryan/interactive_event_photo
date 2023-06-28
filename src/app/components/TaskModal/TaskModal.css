@@ -1,0 +1,85 @@
+.modalInside{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.closingModal{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-bottom: 13px;
+}
+
+.modalTitle{
+    color: #06177C;
+    font-size:26px;
+    font-family: Poppins_Bold,sans-serif;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.modalText{
+    color: #333;
+    text-align: center;
+    font-size: 18px;
+    font-family: Poppins_Regular,sans-serif;
+    margin-bottom: 17px;
+}
+
+.buttonsDiv{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.leftButton{
+    width: 150px;
+    border-radius: 30px;
+    border: 1px solid #3F03A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 26px;
+    color: #3F03A2;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.rightButton{
+    width: 150px;
+    border-radius: 30px;
+    background: #3F03A2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 26px;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+}
+.close{
+    width: 15px;
+    height: 15px;
+}
+
+@media only screen and (min-width:1024px) and (max-width: 1440px) {
+    .modalText{
+        max-width: 600px;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width: 1023px) {
+    .modalText{
+        max-width: 400px;
+    }
+}

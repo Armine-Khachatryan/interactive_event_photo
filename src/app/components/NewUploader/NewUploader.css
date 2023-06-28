@@ -1,0 +1,15 @@
+.rightButton{
+    width: 150px;
+    border-radius: 30px;
+    background: #3F03A2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 26px;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+}
