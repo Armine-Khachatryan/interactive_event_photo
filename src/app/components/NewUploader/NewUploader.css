@@ -13,3 +13,82 @@
     font-family: Poppins_Medium,sans-serif;
     font-weight: 500;
 }
+
+.removeBtn{
+    width: 150px;
+    border-radius: 30px;
+    background: #3F03A2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 26px;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+}
+.upload__image-wrapper{
+    display: flex;
+}
+
+.uploadedImagesWhole{
+    flex: 100%;
+}
+
+.uploadedImages{
+    display: flex;
+    justify-content: center;
+}
+
+.image-item{
+    margin-right: 10px;
+    position: relative;
+}
+.image-item .uploadedImg{
+    width: 131px;
+    height: 85px;
+    object-fit: cover;
+}
+.done{
+    padding: 14px 0;
+    width: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid #3F03A2;
+    background: #FFF;
+    color: #3F03A2;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 50px auto 50px;
+}
+
+.removeItem{
+    background: none;
+    border: none;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.closeBtn{
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+@media only screen  and (max-width: 768px) {
+    .done {
+        padding: 12px 0;
+        width: 130px;
+        margin: 20px auto 20px
+    }
+    .rightButton{
+        padding: 16px 0;
+        width: 140px;
+    }
+}

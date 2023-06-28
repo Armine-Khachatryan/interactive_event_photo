@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  max-width: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body{
   min-height: 100vh;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.container{
+  max-width: 1760px;
+  width: 100%;
+  padding-left:15px;
+  padding-right: 15px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+@font-face {
+  font-family: Poppins_Light;
+  src: url(app/assets/fonts/poppins/Poppins-Light.ttf);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: Poppins_Thin;
+  src: url(app/assets/fonts/poppins/Poppins-Thin.ttf);
+}
+
+@font-face {
+  font-family: Poppins_Medium;
+  src: url(app/assets/fonts/poppins/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: Poppins_Regular;
+  src: url(app/assets/fonts/poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Poppins_SemiBold;
+  src: url(app/assets/fonts/poppins/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Poppins_Bold;
+  src: url(app/assets/fonts/poppins/Poppins-Bold.ttf);
 }

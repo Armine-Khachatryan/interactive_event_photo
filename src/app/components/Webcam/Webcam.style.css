@@ -1,0 +1,23 @@
+.leftButton{
+    width: 150px;
+    border-radius: 30px;
+    border: 1px solid #3F03A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 26px;
+    color: #3F03A2;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+@media only screen  and (max-width: 768px) {
+    .leftButton{
+        padding: 16px 0;
+        width: 140px;
+    }
+
+}

@@ -82,4 +82,46 @@
     .modalText{
         max-width: 400px;
     }
+    .ReactModal__Content{
+        padding: 20px !important;
+        max-width: 600px !important;
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width:425px) and (max-width: 767px) {
+    .ReactModal__Content{
+        padding: 20px !important;
+        max-width: 400px !important;
+        margin: auto;
+    }
+
+}
+
+@media only screen and (min-width:325px) and (max-width: 424px) {
+    .ReactModal__Content{
+        padding: 20px !important;
+        max-width: 300px !important;
+        margin: auto;
+    }
+}
+
+
+@media only screen  and (max-width: 768px) {
+    .modalTitle {
+        font-size: 24px;
+    }
+    .modalText {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .leftButton{
+        padding: 16px 0;
+        width: 140px;
+    }
+    .buttonsDiv{
+        gap: 12px;
+    }
+
 }
