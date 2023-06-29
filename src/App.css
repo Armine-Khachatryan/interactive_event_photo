@@ -22,7 +22,26 @@ html{
   display: flex;
   flex-direction: column;
 }
+.swiper-wrapper{
+  width: 100px !important;
+  height: 150px !important;
+}
+.swiper-slide{
+  width: 100px !important;
+  height: 100px !important;
+}
+.swiper-button-prev{
+  display: none;
+}
+.swiper-button-next{
+  display: none
+}
 
+@media only screen and (max-width: 767px) {
+  .upload__image-wrapper {
+    margin-top: 40px;
+  }
+}
 
 @font-face {
   font-family: Poppins_Light;

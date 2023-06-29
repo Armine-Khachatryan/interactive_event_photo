@@ -12,12 +12,76 @@
     font-weight: 500;
     cursor: pointer;
 }
+.btnsAll{
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+.switchBtn{
+    border-radius: 30px;
+    border: 1px solid #3F03A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    color: #3F03A2;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+}
 
+.captureBtn{
+    border-radius: 30px;
+    border: 1px solid #3F03A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    color: #3F03A2;
+    font-size: 14px;
+    font-family: Poppins_Medium,sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
 
-@media only screen  and (max-width: 768px) {
+@media only screen  and (min-width:425px) and (max-width: 768px) {
     .leftButton{
         padding: 16px 0;
         width: 140px;
     }
+    .webcam-container{
+        height: 300px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .webcam-img{
+        height: 300px;
+    }
+    .webcam{
+        height: 300px;
+    }
+}
 
+@media only screen  and (max-width: 425px) {
+    .leftButton{
+        padding: 16px 0;
+        width: 140px;
+    }
+    .webcam-container{
+        height: 250px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .webcam-img{
+        height: 250px;
+    }
+    .webcam{
+        height: 250px;
+    }
 }
