@@ -38,7 +38,6 @@ export default function WebCami({setOpenCamera, setTakeImg}) {
         <>
             <div className="webcam-container">
                 <div className="webcam-img">
-                  {/*  {image === "" ? (*/}
                         <Webcam
                             className="webcam"
                             audio={false}
@@ -47,13 +46,6 @@ export default function WebCami({setOpenCamera, setTakeImg}) {
                             videoConstraints={videoConstraints}
                             screenshotQuality={1}
                         />
-                 {/*   ) : (
-                        <img
-                            src={image}
-                            alt="Scan"
-                            style={{ width: "500px", height: "auto" }}
-                        />
-                    )}*/}
                 </div>
                 <div className={"btnsAll"}>
                     <button className={"switchBtn"} onClick={handleClick}>Switch camera</button>

@@ -3,11 +3,13 @@ import Close from '../../assets/images/Close.svg';
 import Modal from 'react-modal';
 import './TaskModal.css'
 import {NewUploader} from "../NewUploader/NewUploader";
-import Profile from "../Profile/Profile";
 import Webcami from "../Webcam/Webcam";
 import DeleteIcon from "../../assets/images/Close.svg";
 import axios from "axios";
 import config from "../../config";
+
+
+
 
 function TaskModal(props) {
 
@@ -35,8 +37,8 @@ function TaskModal(props) {
     const [openCamera, setOpenCamera] = useState(false)
     const [takeImg, setTakeImg] = useState('')
     const [upImages,setUpImages]= useState([]);
+    const [nameValue, setNameValue]=useState("");
 
-    console.log(takeImg, "takeImg")
 
     const removeImage = (i)=> {
         let cloneImages =JSON.parse(JSON.stringify(upImages));
@@ -55,12 +57,11 @@ function TaskModal(props) {
                 headers:{
                     "Authorization": `Bearer ${token}`
                 }});
-            // console.log(response.data, "response uploadImg");
             props.onCloseTaskModal();
             props.onGetTasks()
-            setUpImages(null)
+            setUpImages(null);
+            setNameValue("")
         } catch (error) {
-            console.log(error, "error")
         }
     }
 
@@ -78,46 +79,72 @@ function TaskModal(props) {
     };
 
     let sendPhotosCamera =async () => {
-        let token= sessionStorage.getItem('token');
-        let photo =takeImg;
-        let newImg= convertBase64ToFile(photo)
+        let token = sessionStorage.getItem('token');
+        let photo = takeImg;
+        let newImg = convertBase64ToFile(photo)
         let formData = new FormData();
         formData.append('task_id', props?.indx);
         formData.append('image', newImg);
         try {
-            let response = await axios.post(`${config.baseUrl}api/task/upload/image`, formData,{
-                headers:{
+            let response = await axios.post(`${config.baseUrl}api/task/upload/image`, formData, {
+                headers: {
                     "Authorization": `Bearer ${token}`
-                }});
-            console.log(response.data, "response uploadImg");
+                }
+            });
             props.onCloseTaskModal();
             props.onGetTasks()
             setTakeImg(null)
+            setNameValue("")
         } catch (error) {
-            console.log(error, "error")
         }
     }
 
-    console.log(props?.modalInfo , "asasasasmoid")
+        let sendName =async () => {
+            let token= sessionStorage.getItem('token');
+            let formData = new FormData();
+            formData.append('task_id', props?.indx);
+            formData.append('name', nameValue);
+            try {
+                let response = await axios.post(`${config.baseUrl}api/task/add/photographer/name`, formData, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                console.log(response.data)
+                if(response.data.success===true){
+                    setNameValue("")
+                }
+            } catch (error) {
+                console.log(error, "error")
+            }
+        }
 
 
     return (
         <>
             <Modal
                 isOpen={props?.indx !== undefined}
-                onRequestClose={() => props?.onCloseTaskModal()}
+                onRequestClose={() => {props?.onCloseTaskModal();
+                    setNameValue("")}}
                 style={customStyles}
                 ariaHideApp={false}
             >
                 <div className={"modalInside"}>
                     <div className={"closingModal"}
-                         onClick={() => props?.onCloseTaskModal()}
+                         onClick={() => {props?.onCloseTaskModal();
+                             setNameValue("")}}
                     >
                         <img className={"close"} src={Close} alt=""/>
                     </div>
                     <div>
                         <div className={"modalTitle"}>{props?.modalInfo?.event_photo_task?.task_title}</div>
                         <div className={"modalText"}>{props?.modalInfo?.event_photo_task?.task_description}</div>
+                        <div className={"inputDiv"}>
+                            <input placeholder={"name surname"} type="text" value={nameValue}
+                                   onChange={(e)=>setNameValue(e.target.value)}
+                            />
+                            <button className={"sendName"} onClick={sendName}>Send</button>
+                        </div>
                         <div className={"modalSubTitle"}>max upload:{props?.modalInfo?.event_photo_task?.task_max_uploads}</div>
                         {+props?.modalInfo?.media.length ===1 && +props?.modalInfo?.event_photo_task?.task_max_uploads === 1  ? null:
                             <div className={"buttonsDiv"}>
@@ -128,7 +155,6 @@ function TaskModal(props) {
                                         <div className={"leftButton"} onClick={() => setOpenCamera(true)}>Take a photo</div>
 
                                 }
-                                {/*   <Profile/>*/}
                                 <NewUploader uploadImages={props.uploadImages} indx={props.indx} setUpImages={setUpImages}
                                             onCloseTaskModal={props?.onCloseTaskModal} maxNumber={props?.modalInfo?.event_photo_task?.task_max_uploads}/>
                              </div>

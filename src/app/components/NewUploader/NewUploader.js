@@ -15,15 +15,12 @@ export function NewUploader(props) {
         props.setUpImages(imageList)
     };
 
-    console.log(props.maxNumber, "max NUm")
-
     // const removeImage = (i)=> {
     //     let cloneImages =JSON.parse(JSON.stringify(images));
     //     cloneImages.splice(i, 1);
     //     setImages(cloneImages);
     // }
 
-    console.log(images, "images")
 
 
     return (
@@ -65,23 +62,6 @@ export function NewUploader(props) {
                     {/*<button className="removeBtn" onClick={onImageRemoveAll}>Remove all images</button>*/}
                 </ImageUploading>
             </div>
-            {/*<div className={"uploadedImagesWhole"}>*/}
-            {/*    <div className={"uploadedImages"}>*/}
-            {/*        {images?.map((image, index) => (*/}
-            {/*            <div key={index} className="image-item">*/}
-            {/*                <img className={"uploadedImg"}*/}
-            {/*                     src={image['data_url']}*/}
-            {/*                     alt="" width="100" />*/}
-            {/*                <button className={"removeItem"} onClick={() => removeImage(index)}><img className={"closeBtn"} src={DeleteIcon}/></button>*/}
-            {/*                /!*<div className="image-item__btn-wrapper">*!/*/}
-            {/*                /!*<button onClick={() => onImageUpdate(index)}>Update</button>*!/*/}
-            {/*                /!*<button className={"removeItem"} onClick={() => onImageRemove(index)}><img className={"closeBtn"} src={DeleteIcon}/></button>*!/*/}
-            {/*                /!*</div>*!/*/}
-            {/*            </div>*/}
-            {/*        ))}*/}
-            {/*    </div>*/}
-            {/*    {images?.length!==0 &&  <div className={"done"} onClick={sendPhotos}>Done</div>}*/}
-            {/*</div>*/}
         </>
     );
 }

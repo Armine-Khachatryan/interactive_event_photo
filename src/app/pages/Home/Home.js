@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { ImageGroup, Image } from 'react-fullscreen-image';
 import { Swiper,  SwiperSlide } from 'swiper/react';
 import { Keyboard, Pagination, Navigation }  from 'swiper';
 import TaskModal from "../../components/TaskModal/TaskModal";
@@ -25,6 +26,7 @@ function Home(props){
     let [indx, setIndx]=useState(undefined);
     let [tasksArray, setTasksArray]=useState(tasks);
     let [modalInfo, setModalInfo]=useState()
+    let [images, setImages]=useState([])
 
     function openTaskModal(id) {
         setIndx(id);
@@ -49,73 +51,119 @@ function Home(props){
                     "Authorization": `Bearer ${token}`
                 }
             });
-            console.log(response.data, "modaaaal");
             setModalInfo(response.data.data)
-            // setTasksResponse(response.data.data)
         } catch (error) {
-            console.log(error, 'auth request  error');
-            console.log(error.response, 'auth request  error response');
         }
     }
 
 
-
-    // const renderTasks= tasks.map((item, index) =>(
-    //     <div className={classes.card} key={index} onClick={()=>{openTaskModal(index)}}>
-    //         <div className={classes.cardTitle}>{item.taskName}</div>
-    //         <div className={classes.cardText}>{item.taskText}</div>
-    //     </div>
-    // ))
-
-    // { +item?.event_photo_task?.task_max_uploads===1 && +item?.media.length ===1 setIndx(undefined)}
-    // console.log(props?.tasksResponse , "sjshsdkssssssssssssssssssssssss")
-    // for(let i=0; i<props?.tasksResponse.length; i++){
-    //     if( +i.event_photo_task.task_max_uploads === 1 && +i.media.length ===1 ){
-    //
-    //     }
-    // }
-
     const renderTasks= props?.tasksResponse?.map((item, index) =>(
-        <div className={classes.card} key={index} onClick={()=>{openTaskModal( item?.id)}}>
-            <div>
+
+            <div className={classes.card} key={index}>
+            <div onClick={()=>{openTaskModal( item?.id)}}>
                 <div className={classes.cardTitle}>{item?.event_photo_task?.task_title}</div>
                 <div className={classes.cardText}>{item?.event_photo_task?.task_description}</div>
                 <div className={classes.cardSubTitle}>max upload: {item?.event_photo_task?.task_max_uploads}</div>
             </div>
-            <Swiper
-                slidesPerView={1}
-                onSlideChange={() => console.log('slide change')}
-                keyboard={{ enabled: true }}
-                modules={[Keyboard, Pagination, Navigation]}
-                pagination={{
-                    clickable: true
-                }}
-                navigation={true}
-                className={"max_width"}
+                {item?.media.length !==0  &&
+            <div  className={classes.swiperIn}
+                   onClick={(e) =>{
+                        setImages([...item.media.reverse()])
+                   }}
             >
-                {item?.media.length !==0 && item?.media?.map((img, index)=>(
-                    <SwiperSlide>
-                        <div className={classes.cardImg} key={index}>
-                            <img src={img?.original_url}/>
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+                <Swiper
+                    slidesPerView={1}
+                    onSlideChange={(e) => console.log(e)}
+                    onSwiper={(eventListeners) => console.log(eventListeners, 1111111111111)}
+                    keyboard={{ enabled: true }}
+                    modules={[Keyboard, Pagination, Navigation]}
+                    pagination={{
+                        clickable: true
+                    }}
+                    navigation={true}
+                    className={"max_width"}
+                >
+
+                        { item?.media.length !==0 && item?.media?.map((img, index)=>(
+                        <SwiperSlide>
+                            <div className={classes.cardImg} key={index}>
+                                    <img
+                                         src={img?.original_url}
+                                         alt={""}
+                                         style={{
+                                             position: 'absolute',
+                                             top: 0,
+                                             left: 0,
+                                             right: 0,
+                                             bottom: 0,
+                                             height: '100%',
+                                             width: '100%',
+                                             objectFit: 'cover',
+                                         }}
+                                    />
+
+                            </div>
+                            </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+                }
         </div>
     ))
 
+
+
     return(
         <>
-            <div className={classes.whole}>
-                <div className="container">
-                    <div className={classes.title}>Hello {props?.userData?.pu_name}! </div>
-                    <div className={classes.subTitle}>Your Interactive Event Photo Task Gallery</div>
-                    <div className={classes.cards}>{renderTasks}</div>
+            {images.length ?
+                <div className="imgGroup" style={{display: 'flex', alignItems:"center", justifyContent:"center", }}>
+                    <ImageGroup >
+                        <ul className="images">
+                            {images.map(i => {
+                                return (
+                                    <li key={i.id}>
+                                        <Image
+                                            src={i.original_url}
+                                            alt=" "
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                                height: '100vh',
+                                                width: '2000px',
+                                                objectFit: 'cover',
+                                            }}
+                                        />
+                                    </li>
+                                )
+                            })
+                            }
+                        </ul>
+                    </ImageGroup>
+                    <button className={classes.closeItem} onClick={() => setImages([])}>
+                        X
+                    </button>
+
                 </div>
-            </div>
-            <TaskModal tasks={tasks} indx={indx} onCloseTaskModal={closeTaskModal} modalInfo={modalInfo}
-                       uploadImages={uploadImages} onGetTasks={props.onGetTasks}
-            />
+
+                :
+                <>
+                    <div className={classes.whole}>
+                        <div className="container">
+                            <div className={classes.title}>Hello {props?.userData?.pu_name}!</div>
+                            <div className={classes.subTitle}>Your Interactive Event Photo Task Gallery</div>
+                            <div className={classes.cards}>
+                                {renderTasks}</div>
+                        </div>
+                    </div>
+                    <TaskModal tasks={tasks} indx={indx} onCloseTaskModal={closeTaskModal} modalInfo={modalInfo}
+                               uploadImages={uploadImages} onGetTasks={props.onGetTasks}
+                    />
+
+                </>
+            }
         </>
     )
 }
