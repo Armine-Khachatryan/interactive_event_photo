@@ -67,7 +67,7 @@ function Home(props) {
             }}>
                 <div className={classes.cardTitle}>{item?.event_photo_task?.task_title}</div>
                 <div className={classes.cardText}>{item?.event_photo_task?.task_description}</div>
-                <div className={classes.cardSubTitle}>max upload: {item?.event_photo_task?.task_max_uploads}</div>
+                {/*<div className={classes.cardSubTitle}>max upload: {item?.event_photo_task?.task_max_uploads}</div>*/}
             </div>
             {item?.media.length !== 0 &&
                 <div className={classes.swiperIn}
