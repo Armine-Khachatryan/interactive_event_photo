@@ -34,7 +34,7 @@ function Home(props){
     }
 
     function closeTaskModal() {
-      setIndx(undefined)
+        setIndx(undefined)
     }
 
     function uploadImages(images, ind){
@@ -59,55 +59,55 @@ function Home(props){
 
     const renderTasks= props?.tasksResponse?.map((item, index) =>(
 
-            <div className={classes.card} key={index}>
+        <div className={classes.card} key={index}>
             <div onClick={()=>{openTaskModal( item?.id)}}>
                 <div className={classes.cardTitle}>{item?.event_photo_task?.task_title}</div>
                 <div className={classes.cardText}>{item?.event_photo_task?.task_description}</div>
                 <div className={classes.cardSubTitle}>max upload: {item?.event_photo_task?.task_max_uploads}</div>
             </div>
-                {item?.media.length !==0  &&
-            <div  className={classes.swiperIn}
-                   onClick={(e) =>{
-                        setImages([...item.media.reverse()])
-                   }}
-            >
-                <Swiper
-                    slidesPerView={1}
-                    onSlideChange={(e) => console.log(e)}
-                    onSwiper={(eventListeners) => console.log(eventListeners, 1111111111111)}
-                    keyboard={{ enabled: true }}
-                    modules={[Keyboard, Pagination, Navigation]}
-                    pagination={{
-                        clickable: true
-                    }}
-                    navigation={true}
-                    className={"max_width"}
+            {item?.media.length !==0  &&
+                <div  className={classes.swiperIn}
+                      onClick={(e) =>{
+                          setImages([...item.media.reverse()])
+                      }}
                 >
+                    <Swiper
+                        slidesPerView={1}
+                        onSlideChange={(e) => console.log(e)}
+                        onSwiper={(eventListeners) => console.log(eventListeners, 1111111111111)}
+                        keyboard={{ enabled: true }}
+                        modules={[Keyboard, Pagination, Navigation]}
+                        pagination={{
+                            clickable: true
+                        }}
+                        navigation={true}
+                        className={"max_width"}
+                    >
 
                         { item?.media.length !==0 && item?.media?.map((img, index)=>(
-                        <SwiperSlide>
-                            <div className={classes.cardImg} key={index}>
+                            <SwiperSlide>
+                                <div className={classes.cardImg} key={index}>
                                     <img
-                                         src={img?.original_url}
-                                         alt={""}
-                                         style={{
-                                             position: 'absolute',
-                                             top: 0,
-                                             left: 0,
-                                             right: 0,
-                                             bottom: 0,
-                                             height: '100%',
-                                             width: '100%',
-                                             objectFit: 'cover',
-                                         }}
+                                        src={img?.original_url}
+                                        alt={""}
+                                        style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            height: '100%',
+                                            width: '100%',
+                                            objectFit: 'cover',
+                                        }}
                                     />
 
-                            </div>
+                                </div>
                             </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-                }
+                        ))}
+                    </Swiper>
+                </div>
+            }
         </div>
     ))
 
