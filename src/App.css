@@ -43,13 +43,6 @@ html{
 .imgGroup > .fullscreen-group{
   width: 100% !important;
 }
-
-@media only screen and (max-width: 767px) {
-  .upload__image-wrapper {
-    margin-top: 40px;
-  }
-}
-
 @font-face {
   font-family: Poppins_Light;
   src: url(app/assets/fonts/poppins/Poppins-Light.ttf);

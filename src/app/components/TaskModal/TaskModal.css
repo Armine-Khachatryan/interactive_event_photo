@@ -163,19 +163,84 @@
 
 @media only screen  and (max-width: 768px) {
     .modalTitle {
-        font-size: 22px;
+        font-size: 20px;
     }
     .modalText {
-        font-size: 16px;
+        font-size: 14px;
         margin-bottom: 10px;
     }
 
     .leftButton{
         padding: 16px 0;
-        width: 140px;
+        max-width: 140px;
+        width: 100%;
     }
     .buttonsDiv{
         gap: 12px;
     }
+    .inputDiv{
+        flex-direction: column;
+        margin-top: 8px;
+    }
+    .sendName{
+        width: 100px;
+    }
+}
 
+@media only screen and (min-width:600px) and (max-width: 767px) {
+    .modalTitle {
+        max-width: 590px;
+        width: 100%;
+        white-space:pre-wrap;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .modalText {
+        max-width: 590px;
+        width: 100%;
+        white-space:pre-wrap;
+        text-align: center;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media only screen and (min-width:425px) and (max-width: 600px) {
+    .modalTitle {
+        max-width: 400px;
+        width: 100%;
+        white-space:pre-wrap;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .modalText {
+        max-width: 400px;
+        width: 100%;
+        white-space:pre-wrap;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media only screen and (max-width: 424px) {
+    .modalTitle {
+        max-width: 300px;
+        width: 100%;
+        white-space:pre-wrap;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .modalText {
+        max-width: 320px;
+        width: 100%;
+        white-space:pre-wrap;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }

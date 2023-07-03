@@ -53,10 +53,10 @@
     }
     .webcam-container{
         height: 300px;
-        margin-bottom: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 60px;
     }
     .webcam-img{
         height: 300px;
@@ -73,7 +73,7 @@
     }
     .webcam-container{
         height: 250px;
-        margin-bottom: 30px;
+        margin-bottom: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
